@@ -9,7 +9,7 @@ function Sensor_On() {
     	client.send(message);
   
 }
-function LED1_Off(){
+function Historial_On(){
 	
 	archi1=open("Historial.txt","w")
 	archi1.write("")
