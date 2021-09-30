@@ -7,17 +7,6 @@ function Sensor_On() {
 	message = new Paho.MQTT.Message("ON");
     	message.destinationName = "altairlbn2020@gmail.com/t2";
     	client.send(message);
-	
-	  // called when a message arrives
-  function onMessageArrived(message) {
-    console.log("onMessageArrived:"+message.payloadString);
-	 // document.getElementById("sensor").innerHTML=message.payloadString;
-	  var hola = message.payloadString.split("-");
-	  document.getElementById("sensor").innerHTML=hola[0];
-	  document.getElementById("sensor1").innerHTML=hola[1];
-	  
-	
-  }
 
   }
 
@@ -80,6 +69,15 @@ function Historial_On(){
   }
 
 
-
+if (Sensor_On == 'ON'){
+	// called when a message arrives
+	function onMessageArrived(message) {
+		console.log("onMessageArrived:"+message.payloadString);
+		// document.getElementById("sensor").innerHTML=message.payloadString;
+		var hola = message.payloadString.split("-");
+		document.getElementById("sensor").innerHTML=hola[0];
+		document.getElementById("sensor1").innerHTML=hola[1];
+	}
+}
 
 
