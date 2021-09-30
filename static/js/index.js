@@ -67,17 +67,12 @@ function Historial_On(){
       console.log("onConnectionLost:"+responseObject.errorMessage);
     }
   }
-
-
-if (Sensor_On == 'ON'){
-	// called when a message arrives
-	function onMessageArrived(message) {
-		console.log("onMessageArrived:"+message.payloadString);
-		// document.getElementById("sensor").innerHTML=message.payloadString;
-		var hola = message.payloadString.split("-");
-		document.getElementById("sensor").innerHTML=hola[0];
-		document.getElementById("sensor1").innerHTML=hola[1];
+// called when a message arrives
+function onMessageArrived(message) {
+	console.log("onMessageArrived:"+message.payloadString);
+	// document.getElementById("sensor").innerHTML=message.payloadString;
+	var hola = message.payloadString.split("-");
+	document.getElementById("sensor").innerHTML=hola[0];
+	document.getElementById("sensor1").innerHTML=hola[1];
 	}
-}
-
 
