@@ -9,14 +9,18 @@ function Sensor_On() {
     	client.send(message);
   
 }
-//function LED1_Off(){	
+function LED1_Off(){
+	
+	archi1=open("Historial.txt","w")
+	archi1.write("")
+	
 	//alert("led off");
 //	console.log("led off");
 //	message = new Paho.MQTT.Message("OFF");
 //    	message.destinationName = "altairlbn2020@gmail.com/t2";
 //    	client.send(message);
 	//document.getElementById("sensor").innerHTML="led off";
-//}
+}
 
 
   
