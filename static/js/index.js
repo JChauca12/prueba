@@ -11,14 +11,14 @@ function Sensor_On() {
   }
 
 function Historial_On(){
-	var numero_aleatorio=Math.random()
+	
 	
 	//alert("led off");
-//	console.log("led off");
-//	message = new Paho.MQTT.Message("OFF");
-//    	message.destinationName = "altairlbn2020@gmail.com/t2";
-//    	client.send(message);
-	//document.getElementById("sensor").innerHTML="led off";
+	console.log("led off");
+	message = new Paho.MQTT.Message("OFF");
+    	message.destinationName = "altairlbn2020@gmail.com/t2";
+    	client.send(message);
+	document.getElementById("sensor").innerHTML="led off";
 }
 
 
@@ -72,6 +72,7 @@ function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
 	document.getElementById("sensor").innerHTML=message.payloadString;
 	//var hola = message.payloadString.split("-");
+	var numero_aleatorio=Math.random()
 	//document.getElementById("sensor").innerHTML=hola[0];
 	//document.getElementById("sensor1").innerHTML=hola[1];
 	//document.getElementById("Historial1").innerHTML=hola[2];
