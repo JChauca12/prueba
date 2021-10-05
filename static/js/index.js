@@ -3,7 +3,7 @@
 function Sensor_On() {
 	//alert("led on");
 	console.log("sensor on");
-	//document.getElementById("sensor").innerHTML="led on";
+	document.getElementById("sensor").innerHTML=var numero_aleatorio=Math.random();
 	message = new Paho.MQTT.Message("ON");
     	message.destinationName = "altairlbn2020@gmail.com/t2";
     	client.send(message);
