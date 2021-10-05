@@ -11,8 +11,7 @@ function Sensor_On() {
   }
 
 function Historial_On(){
-	archi1=open("Historial.txt","w")
-	archi1.write("")
+	var numero_aleatorio=Math.random()
 	
 	//alert("led off");
 //	console.log("led off");
@@ -71,11 +70,11 @@ function Historial_On(){
 // called when a message arrives
 function onMessageArrived(message) {
 	console.log("onMessageArrived:"+message.payloadString);
-	//document.getElementById("sensor").innerHTML=message.payloadString;
-	var hola = message.payloadString.split("-");
-	document.getElementById("sensor").innerHTML=hola[0];
-	document.getElementById("sensor1").innerHTML=hola[1];
-	document.getElementById("Historial1").innerHTML=hola[2];
+	document.getElementById("sensor").innerHTML=message.payloadString;
+	//var hola = message.payloadString.split("-");
+	//document.getElementById("sensor").innerHTML=hola[0];
+	//document.getElementById("sensor1").innerHTML=hola[1];
+	//document.getElementById("Historial1").innerHTML=hola[2];
 	
 	}
 
