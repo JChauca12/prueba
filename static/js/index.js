@@ -1,12 +1,20 @@
 //https://www.eclipse.org/paho/clients/js/
 
 function Sensor_On() {
-	//alert("led on");
-	console.log("sensor on");
-	document.getElementById("sensor").innerHTML="Led on";
-	message = new Paho.MQTT.Message("ON");
-    	message.destinationName = "altairlbn2020@gmail.com/t2";
-    	client.send(message);
+
+  var EtiquetaSensor1=document.getElementById("sensor1");
+  var HiddenSensor1=EtiquetaSensor1.getAttribute("hidden");
+
+  var EtiquetaSensor2=document.getElementById("sensor2");
+  var HiddenSensor2=EtiquetaSensor2.getAttribute("hidden");
+
+  if(HiddenSensor1 || HiddenSensor2){
+    EtiquetaSensor1.removeAttribute("hidden");
+    EtiquetaSensor2.removeAttribute("hidden");
+  }else{
+    EtiquetaSensor1.setAttribute("hidden", "hidden");
+    EtiquetaSensor2.setAttribute("hidden", "hidden");
+  }
 
   }
 
@@ -15,15 +23,10 @@ function Historial_On(){
 	
 	//alert("led off");
 	console.log("led off");
-	message = new Paho.MQTT.Message("OFF");
+	message = new Paho.MQTT.Message("RegistroSensores");
     	message.destinationName = "altairlbn2020@gmail.com/t2";
     	client.send(message);
-	document.getElementById("sensor").innerHTML="led off";
-}
-
-
-	
-
+}	
 
 // Create a client instance
   //client = new Paho.MQTT.Client("postman.cloudmqtt.com", 14970);
@@ -69,12 +72,16 @@ function Historial_On(){
   }
 // called when a message arrives
 function onMessageArrived(message) {
-	console.log("onMessageArrived:"+message.payloadString);
-	//document.getElementById("sensor").innerHTML=message.payloadString;
-	var hola = message.payloadString.split("-");
-	document.getElementById("sensor").innerHTML=hola[0];
-	document.getElementById("sensor1").innerHTML=hola[1];
-	//document.getElementById("Historial1").innerHTML=hola[2];
+    console.log("onMessageArrived:"+message.payloadString);//Se muestra en la consola el mensaje recibido
+    
+    var mensaje=message.payloadString;//Se guarda el mensaje en una variable
+    var registro=mensaje.split('_');
+    if (registro[0]==("Registro")){//Cuando se conecta por primera vez a la tarjeta
+      document.getElementById("historial").innerHTML=registro[1];//Muestra un mensaje de recibido en la web
+    }
+    var sensores=mensaje.split('-');//Divide el formato en que llegan los valores a razón del espacio en blanco
+    document.getElementById("sensor1").innerHTML=sensores[0];//Muestra el primer valor en la etiqueta
+    document.getElementById("sensor2").innerHTML=sensores[1];//Muestra el segundo valor en la etiqueta
 	
 	}
 
